@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vetryxvpnceo.github.io/vetryx-guides/sitemap.xml
