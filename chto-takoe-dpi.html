@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DPI — что это, кратко: почему VPN вдруг перестаёт работать</title>
+<meta name="description" content="Коротко о DPI: как провайдер распознаёт VPN по служебным признакам трафика и что делать, если соединение обрывается или не подключается.">
+<link rel="canonical" href="https://vetryxvpnceo.github.io/vetryx-guides/chto-takoe-dpi.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DPI — что это, кратко: почему VPN вдруг перестаёт работать">
+<meta property="og:description" content="Коротко о DPI: как провайдер распознаёт VPN по служебным признакам трафика и что делать, если соединение обрывается или не подключается.">
+<meta property="og:url" content="https://vetryxvpnceo.github.io/vetryx-guides/chto-takoe-dpi.html">
+<meta name="robots" content="index,follow">
+<style>:root{--bg:#07080d;--bg2:#0b0d14;--card:#121524;--text:#eef0f7;--text2:#a9aec0;--pink:#ff2d7a;--purple:#7c5cff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 'Segoe UI',Roboto,Arial,sans-serif}
+a{color:#c6b3ff}a:hover{color:#fff}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid #1b1f30}
+.bar{display:flex;align-items:center;gap:12px;padding:18px 0}
+.logo{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#ff2d7a,#b43cff 55%,#7c5cff)}
+.brand{font-weight:800;letter-spacing:.4px}
+.brand a{color:var(--text);text-decoration:none}
+main{padding:28px 0 10px}
+h1{font-size:31px;line-height:1.25;margin:.2em 0 .5em}
+h2{font-size:22px;margin:1.5em 0 .5em}h3{font-size:18px;margin:1.2em 0 .4em}
+.lead{color:var(--text2);font-size:18px}
+.cta{display:block;margin:26px 0;padding:20px;border:1px solid #2a2f45;border-radius:16px;background:linear-gradient(180deg,rgba(124,92,255,.10),rgba(16,18,27,.4))}
+.cta .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.btn{display:inline-block;padding:11px 18px;border-radius:12px;font-weight:700;text-decoration:none}
+.btn-p{background:linear-gradient(135deg,#ff2d7a,#7c5cff);color:#fff}
+.btn-s{border:1px solid #3a3f58;color:var(--text)}
+ul,ol{padding-left:22px}li{margin:.3em 0}
+footer{border-top:1px solid #1b1f30;color:var(--text2);font-size:14px;padding:26px 0;margin-top:30px}
+.cards{display:grid;gap:14px;padding:6px 0 20px}
+.cardlink{display:block;padding:18px;border:1px solid #1b1f30;border-radius:14px;background:var(--bg2);text-decoration:none;color:var(--text)}
+.cardlink:hover{border-color:#2a2f45}.cardlink b{display:block;margin-bottom:4px}
+.cardlink span{color:var(--text2);font-size:15px}</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><div class="bar"><span class="logo" aria-hidden="true"></span><span class="brand"><a href="https://vetryxvpnceo.github.io/vetryx-guides/">VETRYX</a></span></div></div></header>
+<main><div class="wrap">
+<h1>DPI — что это, кратко: почему VPN вдруг перестаёт работать</h1>
+<p class="lead">DPI — это глубокая проверка пакетов: оборудование оператора смотрит не только куда идёт трафик, но и как устроено само соединение. Содержимое при этом остаётся зашифрованным, а вот «манера» соединения видна.</p>
+<h2>Что видит DPI</h2>
+<ul>
+<li><strong>IP-адрес сервера</strong> — если он в списке, соединение рвётся сразу.</li>
+<li><strong>Имя сайта (SNI)</strong> — при обычном TLS оно передаётся в начале соединения открытым текстом.</li>
+<li><strong>Сигнатуру протокола</strong> — первые пакеты многих VPN-протоколов узнаваемы.</li>
+<li><strong>Поведение трафика</strong> — размеры пакетов и паузы у туннеля и у обычного сайта различаются.</li>
+</ul>
+<p>Чего DPI не видит: какие именно страницы вы открываете внутри зашифрованного туннеля.</p>
+<h2>Как это выглядит на практике</h2>
+<ul>
+<li>приложение «подключено», но страницы не грузятся;</li>
+<li>соединение живёт пару секунд и обрывается;</li>
+<li>по Wi-Fi работает, на мобильном интернете нет;</li>
+<li>один протокол работает, другой — нет.</li>
+</ul>
+<p>Такая картина обычно говорит о фильтрации трафика в конкретной сети, а не о поломке устройства.</p>
+<h2>Что помогает</h2>
+<ol>
+<li>Обновите подписку в приложении.</li>
+<li>Переключите протокол: VLESS (например, с REALITY, который выглядит как обычное TLS-подключение к стороннему сайту) или Hysteria2 (UDP, похож на HTTP/3).</li>
+<li>Смените сеть или страну сервера.</li>
+<li>Если мобильный интернет работает только по «белым спискам», нужны специальные серверы — обычный VPN там не справится.</li>
+</ol>
+<p>Честно о пределах: ни одна маскировка не даёт гарантии навсегда, потому что фильтрация меняется. Поэтому удобнее, когда у сервиса несколько протоколов и их можно переключать.</p>
+<h2>Где это есть в Vetryx</h2>
+<p>В Vetryx доступны VLESS (REALITY, XHTTP, WebSocket) и Hysteria2, а для мобильного интернета по «белым спискам» есть серверы «Анти-глушилки» с пометкой LTE. Первые 24 часа можно пользоваться бесплатно, без карты.</p>
+<p>Полный разбор — какие признаки использует DPI, как работает маскировка и что делать по шагам — в статье на сайте.</p>
+<div class="cta">
+    <strong>Vetryx — VPN, который работает в России.</strong> VLESS Reality и Hysteria2, 11 стран, безлимит. Российские сайты открываются напрямую.
+    <div class="btns">
+      <a class="btn btn-p" href="https://t.me/VetryxVPN_bot" rel="noopener">Подключиться в Telegram</a>
+      <a class="btn btn-s" href="https://www.vetryx.xyz/#plans" rel="noopener">Тарифы от 81 ₽</a>
+      <a class="btn btn-s" href="https://www.vetryx.xyz/blog.php?slug=chto-takoe-dpi" rel="noopener">Полная статья</a>
+    </div>
+  </div>
+</div></main>
+<footer><div class="wrap">© Vetryx · <a href="https://www.vetryx.xyz" rel="noopener">vetryx.xyz</a> · <a href="https://t.me/VetryxVPN_bot" rel="noopener">Telegram</a></div></footer>
+</body>
+</html>
